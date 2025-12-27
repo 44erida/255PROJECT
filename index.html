@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>255 Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="members" class="ProjectMembers">
+        <h1 class="cardTitle">Project Members</h1>
+        <div id="membersContainer"></div>
+    </div>
+
+    <div id="count" class="countdownContainer hidden">
+        <h1 id="countdown">3</h1>
+    </div>
+
+    <div id="game" class="gameContainter hidden">
+        <div class="scores">
+            <div class="scoreBox">
+                <h3>HI-SCORE</h3>
+                <p id="hiScore">0</p>
+            </div>
+            <div class="scoreBox">
+                <h3>SCORE</h3>
+                <p id="score">0</p>
+            </div>
+            <div class="scoreBox">
+                <h3>TIME</h3>
+                <p id="time">10</p>
+            </div>
+        </div>
+
+        <div class="gameBoard">
+            <div id="gameGrid"></div>
+            <h2 id="msg">Tap the black tiles!</h2>
+        </div>
+
+        <div class="progressBarContainer">
+            <div id="progressBar"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+/* Reset*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    transition: background-color 1s ease;
+}
+
+.ProjectMembers {
+    background-color: #666;
+    padding: 40px;
+    border-radius: 10px;
+    width: auto;
+    color: white;
+}
+
+h1 {
+    color: #4444f8;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bolder;
+}
+
+.member {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.member img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.details h2 {
+    font-size: 1.7rem;
+    font-weight: bolder;
+}
+
+.details p {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+#countdown {
+    font-size: 10rem;
+    color: #4444f8;
+    text-align: center;
+}
+
+.body-white {
+    background-color: white;
+    align-items: normal;
+}
+
+.gameContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 0px;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-between;
+    width: 350px;
+    margin-bottom: 20px;
+}
+
+.scoreBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.scoreBox h3 {
+    font-size: 0.8rem;
+    color: black;
+    margin-bottom: 0px;
+    font-weight: bold;
+}
+
+.scoreBox p {
+    font-size: 3rem;
+    font-weight: lighter;
+    color: black;
+    margin-top: 0px;
+}
+
+#score {
+    font-size: 4.5rem;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+#time {
+    color: #ff4444;
+}
+
+.gameBoard {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    margin-bottom: 30px;
+}
+
+#gameGrid {
+    
+}
+
+.tile {
+    background-color: white;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.blackTile {
+    background-color: black;
+}
+
+#msg {
+    position: absolute;
+    font-size: 2rem;
+    color: #d0d0ac;
+    text-align: center;
+    top: 40%;
+    left: 0%;
+    width: 100%;
+    pointer-events: none;
+}
+
+.progressBarContainer {
+    width: 250px;
+    height: 10px;
+    background-color: #6fcfff;
+    border: 2px solid #000;
+    overflow: hidden;
+}
+
+#progressBar {
+    transition: width 0.1s linear;
+}
+
