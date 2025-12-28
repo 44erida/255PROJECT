@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    html {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background-color: #161e2f;
+      transition: all 2s ease;
+    }
+
+    #memberWrapper {
+      display: flex;
+      flex-direction: column;
+      background-color: #541a2f;
+      border-radius: 20px;
+      border: 3px solid #000000;
+      transition: all 1s ease-out;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .member {
+      border: 3px solid black;
+      background-color: #976b5d;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 300px;
+      color: white;
+      border-radius: 20px;
+      font-size: 20px;
+      text-align: right;
+    }
+
+    .member > img {
+      height: 55px;
+      border-radius: 50%;
+      border: 2px solid rgb(19, 19, 57);
+    }
+
+    .line {
+      padding: 15px;
+    }
+
+    .heading {
+      font-size: 32px;
+      font-family: Georgia, "Times New Roman", Times, serif;
+      text-align: center;
+      padding-top: 10px;
+      color: antiquewhite;
+    }
+
+    .timerDiv {
+      font-size: 120px;
+      color: #976b5d;
+    }
+
+    .cell {
+      width: 100px;
+      height: 100px;
+      border: 2px solid black;
+      border-collapse: collapse;
+      transition: background-color 1s ease;
+    }
+
+    .selected {
+        background-color: #2f2f2f;
+        cursor: pointer;
+    }
+
+    .fadeOutGreen {
+        background-color: green !important;
+        transition: none !important;
+    }
+
+
+    #gameTable {
+      display: none;
+      border-collapse: collapse;
+    }
+
+
+
+
+  </style>
+  <body>
+    <div id="memberWrapper">
+      <div class="heading">Project Members</div>
+      <div class="line">
+        <div class="member">
+          <img src="./img/AlejandroMaduro.jpg" />Alejandro Maduro
+          <br />
+          22401028
+        </div>
+      </div>
+
+      <div class="line">
+        <div class="member">
+          <img src="./img/EridaPuka.jpg" />Erida Puka
+          <br />
+          22401239
+        </div>
+      </div>
+
+      <div class="line">
+        <div class="member">
+          <img src="./img/EfekanSahin.jpg" />Efekan Şahin
+          <br />
+          22302571
+        </div>
+      </div>
+      <div class="heading" style="margin-bottom: 10px;">CLICK TO START</div>
+    </div>
+
+    <table id="gameTable">
+      <tr>
+        <td class="cell" id="1"></td>
+        <td class="cell" id="2"></td>
+        <td class="cell" id="3"></td>
+        <td class="cell" id="4"></td>
+      </tr>
+      <tr>
+        <td class="cell" id="5"></td>
+        <td class="cell" id="6"></td>
+        <td class="cell" id="7"></td>
+        <td class="cell" id="8"></td>
+      </tr>
+      <tr>
+        <td class="cell" id="9"></td>
+        <td class="cell" id="10"></td>
+        <td class="cell" id="11"></td>
+        <td class="cell" id="12"></td>
+      </tr>
+      <tr>
+        <td class="cell" id="13"></td>
+        <td class="cell" id="14"></td>
+        <td class="cell" id="15"></td>
+        <td class="cell" id="16"></td>
+      </tr>
+    </table>
+  </body>
+  <script>
+    const body = document.querySelector("body");
+    const table = document.querySelector("table");
+    let selectedCells = [-1, -1, -1];
+
+
+    window.addEventListener("click", function () {
+
+
+
+
+
+      //Removing the initial wrapper
+        document.getElementById("memberWrapper").style.opacity = "0";
+        setTimeout(function () {
+          document.getElementById("memberWrapper").remove();
+        }, 1000);
+
+      setTimeout(function () 
+      {
+        let shownTime = 4;
+
+        let newDiv = document.createElement("div");
+        newDiv.textContent = shownTime;
+        newDiv.classList.add("timerDiv");
+        body.appendChild(newDiv);
+
+        const timer = setInterval(function () {
+          shownTime--;
+          newDiv.textContent = shownTime;
+
+          if (shownTime == 0)
+          {
+            clearInterval(timer);
+            newDiv.remove();
+            document.querySelector("html").style.backgroundColor = "white";
+            table.style.display = "block";
+
+
+            
+
+
+            //uniquely and randomly cell choosing
+            for(let i = 0; i < 3; i++){
+                selectedCells[i] = Math.floor(Math.random()*16 + 1);
+                for(let k = 0; k < i; k++){
+                    if(selectedCells[k] == selectedCells [i]){
+                        i--;
+                    }
+                }
+            }
+
+           //Drawing initial randomized black cells
+           for(let i = 0; i < 3; i++) {
+            document.getElementById(`${selectedCells[i]}`).classList.add("selected");
+           }
+
+
+            table.addEventListener("click", (event) => {
+ 
+                const clickedCell = event.target;
+
+
+
+                if( clickedCell.tagName == "TD" && clickedCell.classList.contains("selected")){
+
+                    //Black Cell Clicked
+
+                    let cellId = clickedCell.id;
+                    let indexToReplace = -1;
+
+
+                    //Clarifing the index that needs to be switched with another.
+                    for(let i = 0; i < 3; i++){
+                        if(cellId == selectedCells[i]){
+                            indexToReplace = i;
+                        }
+                    }
+
+                    let randNum;
+
+                    //Replacing with another cell.
+                    do{
+                        randNum = Math.floor(Math.random()*16 + 1);
+                    }while(randNum == selectedCells[0] || randNum == selectedCells[1] || randNum == selectedCells[2]);
+
+                   selectedCells[indexToReplace] = randNum;
+
+
+                   document.getElementById(`${selectedCells[indexToReplace]}`).classList.add("selected");
+
+                   clickedCell.classList.remove("selected");
+                   clickedCell.classList.add("fadeOutGreen");
+
+                    setTimeout(function(){
+                       clickedCell.classList.remove("fadeOutGreen");
+                    },10);
+
+
+                }
+
+
+                //End of event listener
+            })
+
+
+            //End of timer == 0
+          }
+        }, 1000);
+      }, 1000);
+    
+    
+    
+    
+    
+    
+    }, {once: true});
+    //For this part, I searched the web, because I assigned the click event to the window it was repetitevely being executed, so I figured out that {once: true} solves this problem.
+
+  </script>
+</html>
