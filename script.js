@@ -4,19 +4,19 @@ const membersList = [
         name: "Alejandro Maduro",
         section: "02",
         id: "22401028",
-        image: "./src/Images/Alejandro.jpg"
+        image: "./Images/Alejandro.jpg"
     },
     {
         name: "Efekan Sahin",
         section: "04",
         id: "22302571",
-        image: "./src/Images/Efekan.jpg"
+        image: "./Images/Efekan.jpg"
     },
     {
         name: "Erida Puka",
         section: "04",
         id: "22401239",
-        image: "./src/Images/Erida.jpg"
+        image: "./Images/Erida.jpg"
     }
 ];
 
@@ -94,23 +94,123 @@ function createGrid() {
 
 
 
-//Generates 3 random number in range [1-16] and returns it within an array.
-function generateRandomCell() {
-    let rndmArr = [-1,-1,-1];
-    let rndNum = -1;
-    let isUnique = true;
+const nums=[]
 
-    for(let i = 0; i < 3; i++){
-        rndNum = Math.floor(Math.random()*16 + 1);
-        for(let k = 0; k < i; k++){
-            if(rndNum == rndmArr[k]) {
-                i--;
-                isUnique = false;
+function blackTiles(){
+    do{
+        const rnd=Math.floor(Math.random() * 16)+1;
+            if (!nums.includes(rnd)){
+                nums.push(rnd)
             }
-        }
-        if(isUnique)
-            rndmArr[i] = rndNum;
-    }
+        }while(nums.length<3)
+        const t1= document.getElementById(`${nums[0]}`)
+        const t2= document.getElementById(`${nums[1]}`)
+        const t3= document.getElementById(`${nums[2]}`)
 
-    return rndmArr;
+        t1.classList.add("black")
+        t2.classList.add("black")
+        t3.classList.add("black")
 }
+
+
+blackTiles();
+
+
+const table = document.getElementById("table")       
+      
+   
+    let gameStart = true
+    let gameOver = false
+
+    const gameCounter = document.getElementById("time")
+   
+
+
+
+  let points = 10
+  let timer = 10
+  let pointsTimer
+  const newHigh=document.getElementById("newHigh")
+  const totalPoints= document.getElementById("score")
+  let totalP=0
+ 
+  const hiscore = document.getElementById("hiScore")
+ 
+  
+ let highScore = Number(localStorage.getItem("highScore")) || 0;
+ hiscore.textContent = highScore;
+
+ const playAgain=document.getElementById("again")
+table.addEventListener("click",function(e){
+    if(gameOver){
+       
+      return;
+    } 
+   
+    const tile = e.target.closest("td.black");
+    if (!tile) return;
+    pointsTimer = 10
+    if(gameStart){
+        document.getElementById("msg").classList.add("hiddenH2")
+        gameCounter.textContent = timer;
+        const countdownInterval = setInterval(() => {
+        timer--;
+        const timerPoints = setInterval(() => {
+        pointsTimer--
+        if(pointsTimer>=0){
+            points=pointsTimer
+        }
+        else {
+            clearInterval(timerPoints)
+            }
+            }, 100);
+        if (timer >= 0) {
+            
+            gameCounter.textContent = timer;
+                  
+        }else {
+            clearInterval(countdownInterval);
+            gameOver=true
+            if(totalP>Number(localStorage.getItem("highScore"))){
+            hiscore.textContent=totalP
+            localStorage.setItem("highScore",totalP)
+            newHigh.textContent="New hiScore!"
+            newHigh.classList.remove("hidden")
+            newHigh.classList.add("visible")
+            confetti({
+                particleCount:200
+            });
+            }
+            else{
+                newHigh.textContent="Time is up!"
+                newHigh.classList.remove("hidden")
+                newHigh.classList.add("visible")
+            }
+            playAgain.classList.remove("hidden")
+            playAgain.classList.add("visible")
+            playAgain.classList.add("heartbeat")
+        }}, 1000); 
+        gameStart=false;
+    }
+    
+   
+        tile.classList.remove("black")
+        tile.classList.add("green")
+           
+        const id = Number(tile.id)
+        nums.splice(nums.indexOf(id), 1);
+        let rnd;
+        do {
+        rnd = Math.floor(Math.random() * 16) + 1;
+        } while (nums.includes(rnd));
+
+        nums.push(rnd);
+        document.getElementById(`${rnd}`).classList.remove("green")
+        document.getElementById(`${rnd}`).classList.add("black");
+
+        tile.innerHTML=`<span>+${points}</span>`
+        totalP=totalP+points
+        totalPoints.textContent=totalP
+      
+ })
+

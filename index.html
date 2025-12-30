@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>255 Project</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
@@ -37,54 +36,54 @@
         </div>
 
         <div class="gameBoard">
-            <div id="gameGrid">
-                <table id="gameTable">
-                    <tr>
-
-                        <td class="cell" id="1"></td>
-                        <td class="cell" id="2"></td>
-                        <td class="cell" id="3"></td>
-                        <td class="cell" id="4"></td>
-
-                    </tr>
-                    <tr>
-
-                        <td class="cell" id="5"></td>
-                        <td class="cell" id="6"></td>
-                        <td class="cell" id="7"></td>
-                        <td class="cell" id="8"></td>
-
-
-                    </tr>
-                    <tr>
-
-                        <td class="cell" id="9"></td>
-                        <td class="cell" id="10"></td>
-                        <td class="cell" id="11"></td>
-                        <td class="cell" id="12"></td>
-
-
-                    </tr>
-                    <tr>
-
-                        <td class="cell" id="13"></td>
-                        <td class="cell" id="14"></td>
-                        <td class="cell" id="15"></td>
-                        <td class="cell" id="16"></td>
-
-
-                    </tr>
-                </table>
-            </div>
+            <div id="gameGrid"></div>
             <h2 id="msg">Tap the black tiles!</h2>
-        </div>
+    <!-- erida: i added the table here -->
+         <div>
+        <table id="table">
+            <tr>
+                <td id="1"></td>
+                <td id="2"></td>
+                <td id="3"></td>
+                <td id="4"></td>
+            </tr>
+            <tr>
+                <td id="5"></td>
+                <td id="6"></td>
+                <td id="7"></td>
+                <td id="8"></td>
+            </tr>
+            <tr>
+                <td id="9"></td>
+                <td id="10"></td>
+                <td id="11"></td>
+                <td id="12"></td>
+            </tr>
+            <tr>
+                <td id="13"></td>
+                <td id="14"></td>
+                <td id="15"></td>
+                <td id="16"></td>
+            </tr>
+        </table>
+    </div>
 
+   
+        </div>
+     
+    
         <div class="progressBarContainer">
             <div id="progressBar"></div>
         </div>
     </div>
+<div>
+     <h1 id="newHigh" class="hidden" style="color: red; ">New <br> HISCORE</h1>
+</div>
 
-    <script src="script.js"></script>
+<div><h1 class="hidden" id="again">Press F5 to play again</h1></div>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+
+<script src="script.js"></script>
 </body>
 
 </html>
