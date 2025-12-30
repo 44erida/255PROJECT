@@ -91,3 +91,26 @@ function createGrid() {
 
     
 }
+
+
+
+//Generates 3 random number in range [1-16] and returns it within an array.
+function generateRandomCell() {
+    let rndmArr = [-1,-1,-1];
+    let rndNum = -1;
+    let isUnique = true;
+
+    for(let i = 0; i < 3; i++){
+        rndNum = Math.floor(Math.random()*16 + 1);
+        for(let k = 0; k < i; k++){
+            if(rndNum == rndmArr[k]) {
+                i--;
+                isUnique = false;
+            }
+        }
+        if(isUnique)
+            rndmArr[i] = rndNum;
+    }
+
+    return rndmArr;
+}
