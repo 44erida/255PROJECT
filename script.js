@@ -4,19 +4,19 @@ const membersList = [
         name: "Alejandro Maduro",
         section: "02",
         id: "22401028",
-        image: "./Images/Alejandro.jpg"
+        image: "./src/Images/Alejandro.jpg"
     },
     {
         name: "Efekan Sahin",
         section: "04",
         id: "22302571",
-        image: "./Images/Efekan.jpg"
+        image: "./src/Images/Efekan.jpg"
     },
     {
         name: "Erida Puka",
         section: "04",
         id: "22401239",
-        image: "./Images/Erida.jpg"
+        image: "./src/Images/Erida.jpg"
     }
 ];
 
