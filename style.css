@@ -103,6 +103,7 @@ h1 {
   color: black;
   margin-bottom: 0px;
   font-weight: bold;
+  transition: all 0.4s ease-in;
 }
 
 .scoreBox p {
@@ -131,7 +132,7 @@ h1 {
 
 .hiddenH2 {
   opacity: 0;
-  transition: opacity 3s;
+  transition: opacity 1.2s ease;
 }
 
 #gameGrid {
@@ -145,6 +146,7 @@ h1 {
 
 .blackTile {
   background-color: black;
+  transition: all 0.5s ease;
 }
 
 #msg {
@@ -162,7 +164,7 @@ h1 {
   width: 350px;
   background-color: #4444f8;
   height: 10px;
-  margin-top: 100px;
+  margin-top: 60px;
   border: 2px solid #000;
   overflow: hidden;
 }
@@ -176,6 +178,9 @@ h1 {
 table {
   border: 1px solid pink;
   margin: auto;
+
+  width: 400px;
+  border-collapse: collapse;
 }
 tr {
   margin: 0;
@@ -185,10 +190,23 @@ td {
   width: 100px;
   height: 100px;
   border-collapse: collapse;
+  border: 1px solid rgb(225, 185, 192);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+td span {
+  font-family: "SpaceGrotesk-Regular", sans-serif;
+  font-size: 2rem;
+  color: #4caf50;
+  pointer-events: none;
 }
 
 .black {
   background-color: #000;
+  transition: all 0.45s ease;
 }
 .white {
   background-color: white;
@@ -197,7 +215,7 @@ td {
 .green {
   background-color: green;
   opacity: 0;
-  transition: opacity 2s;
+  transition: opacity 0.45s ease-out;
 }
 
 .visible {
@@ -221,7 +239,6 @@ span {
 }
 
 #again {
-  position: fixed;
   color: blue;
   font-size: 25px;
   font-weight: lighter;
@@ -229,8 +246,8 @@ span {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   transition: all 3s;
   position: fixed;
-  bottom: 180px;
-  left: 35%;
+  bottom: -15px;
+  left: 40%;
   transform: translateX(-50%);
   text-align: center;
 }
@@ -254,5 +271,24 @@ span {
   }
   100% {
     transform: scale(1);
+  }
+}
+
+#eagleImage.fly {
+  display: block !important;
+  width: 600px;
+  top: 30%;
+  right: -250px;
+  animation: eagleFly 1.5s linear forwards;
+}
+
+@keyframes eagleFly {
+  from {
+    right: -250px;
+    transform: scaleX(1);
+  }
+  to {
+    right: 110%; /*To make image go outside of window*/
+    transform: scaleX(1);
   }
 }

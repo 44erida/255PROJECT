@@ -1,90 +1,88 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>255 Project</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
-
+  <body>
     <div id="members" class="ProjectMembers">
-        <h1 class="cardTitle">Project Members</h1>
-        <div id="membersContainer"></div>
+      <h1 class="cardTitle">Project Members</h1>
+      <div id="membersContainer"></div>
     </div>
 
     <div id="count" class="countdownContainer hidden">
-        <h1 id="countdown">3</h1>
+      <h1 id="countdown">3</h1>
     </div>
 
     <div id="game" class="gameContainter hidden">
-        <div class="scores">
-            <div class="scoreBox">
-                <h3>HI-SCORE</h3>
-                <p id="hiScore">0</p>
-            </div>
-            <div class="scoreBox">
-                <h3>SCORE</h3>
-                <p id="score">0</p>
-            </div>
-            <div class="scoreBox">
-                <h3>TIME</h3>
-                <p id="time">10</p>
-            </div>
+      <div class="scores">
+        <div class="scoreBox">
+          <h3>HI-SCORE</h3>
+          <p id="hiScore">0</p>
         </div>
+        <div class="scoreBox">
+          <h3>SCORE</h3>
+          <p id="score">0</p>
+        </div>
+        <div class="scoreBox">
+          <h3>TIME</h3>
+          <p id="time">10</p>
+        </div>
+      </div>
 
-        <div class="gameBoard">
-            <div id="gameGrid"></div>
-            <h2 id="msg">Tap the black tiles!</h2>
-    <!-- erida: i added the table here -->
-         <div>
-        <table id="table">
+      <div class="gameBoard">
+        <div id="gameGrid"></div>
+        <h2 id="msg">Tap the black tiles!</h2>
+        <!-- erida: i added the table here -->
+        <div>
+          <table id="table">
             <tr>
-                <td id="1"></td>
-                <td id="2"></td>
-                <td id="3"></td>
-                <td id="4"></td>
+              <td id="1"></td>
+              <td id="2"></td>
+              <td id="3"></td>
+              <td id="4"></td>
             </tr>
             <tr>
-                <td id="5"></td>
-                <td id="6"></td>
-                <td id="7"></td>
-                <td id="8"></td>
+              <td id="5"></td>
+              <td id="6"></td>
+              <td id="7"></td>
+              <td id="8"></td>
             </tr>
             <tr>
-                <td id="9"></td>
-                <td id="10"></td>
-                <td id="11"></td>
-                <td id="12"></td>
+              <td id="9"></td>
+              <td id="10"></td>
+              <td id="11"></td>
+              <td id="12"></td>
             </tr>
             <tr>
-                <td id="13"></td>
-                <td id="14"></td>
-                <td id="15"></td>
-                <td id="16"></td>
+              <td id="13"></td>
+              <td id="14"></td>
+              <td id="15"></td>
+              <td id="16"></td>
             </tr>
-        </table>
+          </table>
+        </div>
+      </div>
+
+      <div class="progressBarContainer">
+        <div id="progressBar"></div>
+      </div>
+    </div>
+    <div>
+      <h1 id="newHigh" class="hidden" style="color: red"></h1>
     </div>
 
-   
-        </div>
-     
-    
-        <div class="progressBarContainer">
-            <div id="progressBar"></div>
-          
-        </div>
-    </div>
-<div>
-     <h1 id="newHigh" class="hidden" style="color: red; "></h1>
-</div>
-
-<div><h1 class="hidden" id="again">Press F5 to play again</h1></div>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
-
-<script src="script.js"></script>
-</body>
-
+    <div><h1 class="hidden" id="again">Press F5 to play again</h1></div>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+    <img
+      src="./src/img/eagle.png"
+      id="eagleImage"
+      style="display: none; position: fixed; z-index: 9999"
+    />
+    <audio id="eagleAudio" src="./src/sounds/EagleSound.mp3"></audio>
+    <script src="script.js"></script>
+  </body>
 </html>

@@ -167,9 +167,20 @@ table.addEventListener("click", function (e) {
           newHigh.textContent = "New hiScore";
           newHigh.classList.remove("hidden");
           newHigh.classList.add("visible");
+
           confetti({
             particleCount: 200,
           });
+          const eagle = document.getElementById("eagleImage");
+          const eagleSound = document.getElementById("eagleAudio");
+          eagle.classList.add("fly");
+
+          eagleSound.currentTime = 0;
+          eagleSound.play();
+
+          setTimeout(() => {
+            eagle.classList.remove("fly");
+          }, 2000);
         } else {
           newHigh.textContent = "Time is up";
           newHigh.classList.remove("hidden");
@@ -198,6 +209,12 @@ table.addEventListener("click", function (e) {
   document.getElementById(`${rnd}`).classList.add("black");
 
   tile.innerHTML = `<span>+${points}</span>`;
+
+  //clearing divs' inside.
+  setTimeout(() => {
+    tile.innerHTML = "";
+  }, 500);
+
   totalP = totalP + points;
   totalPoints.textContent = totalP;
 });
